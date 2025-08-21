@@ -57,7 +57,7 @@
                                 </c:choose>
                             </div>
                             <div class="digi-frame-label">Tài liệu mới</div>
-                            <div class="digi-frame-title">${doc.courseId != null ? doc.courseId.title : 'Tài liệu'}</div>
+                            <div class="digi-frame-title">${doc.title != null && fn:length(doc.title) > 0 ? doc.title : 'Tài liệu'}</div>
                             <div class="digi-frame-desc">
                                 Tác giả: ${doc.courseId != null && doc.courseId.author != null ? doc.courseId.author : '-'}<br>
                                 Năm xuất bản: ${doc.courseId != null && doc.courseId.publicationYear != null ? doc.courseId.publicationYear : '-'}

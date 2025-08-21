@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
         expertInterval = setInterval(() => {
             let next = (currentExpert + 1) % cards.length;
             showExpert(next);
-        }, 10000); // <-- 10 giây tự động chuyển
+        }, 7000); // <-- 10 giây tự động chuyển
     }
 
     if (cards.length > 0) {

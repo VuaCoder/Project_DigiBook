@@ -30,7 +30,6 @@ import javax.persistence.TemporalType;
 @NamedQueries({
     @NamedQuery(name = "Course.findAll", query = "SELECT c FROM Course c"),
     @NamedQuery(name = "Course.findById", query = "SELECT c FROM Course c WHERE c.id = :id"),
-    @NamedQuery(name = "Course.findByTitle", query = "SELECT c FROM Course c WHERE c.title = :title"),
     @NamedQuery(name = "Course.findByCoverImage", query = "SELECT c FROM Course c WHERE c.coverImage = :coverImage"),
     @NamedQuery(name = "Course.findByDepartment", query = "SELECT c FROM Course c WHERE c.department = :department"),
     @NamedQuery(name = "Course.findByAuthor", query = "SELECT c FROM Course c WHERE c.author = :author"),
@@ -48,9 +47,6 @@ public class Course implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "title")
-    private String title;
     @Column(name = "cover_image")
     private String coverImage;
     @Column(name = "department")
@@ -72,10 +68,6 @@ public class Course implements Serializable {
         this.id = id;
     }
 
-    public Course(Integer id, String title) {
-        this.id = id;
-        this.title = title;
-    }
 
     public Integer getId() {
         return id;
@@ -85,13 +77,7 @@ public class Course implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    // title removed per schema change; use department for course naming
 
     public String getCoverImage() {
         return coverImage;

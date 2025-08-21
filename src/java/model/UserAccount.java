@@ -35,6 +35,9 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "UserAccount.findByCreatedAt", query = "SELECT u FROM UserAccount u WHERE u.createdAt = :createdAt")})
 public class UserAccount implements Serializable {
 
+    @OneToMany(mappedBy = "ownerId")
+    private List<Document> documentList;
+
     @OneToMany(mappedBy = "userId")
     private List<Vocabulary> vocabularyList;
 
@@ -153,6 +156,14 @@ public class UserAccount implements Serializable {
 
     public void setVocabularyList(List<Vocabulary> vocabularyList) {
         this.vocabularyList = vocabularyList;
+    }
+
+    public List<Document> getDocumentList() {
+        return documentList;
+    }
+
+    public void setDocumentList(List<Document> documentList) {
+        this.documentList = documentList;
     }
     
 }

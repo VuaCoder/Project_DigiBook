@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title><%=course != null ? course.getTitle() : "Giáo trình"%></title>
+    <title><%=course != null ? (course.getDepartment()==null?"Giáo trình":course.getDepartment()) : "Giáo trình"%></title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/digibook.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/course-detail.css">
     <link rel="icon" type="image/x-icon" href="<%=request.getContextPath()%>/img/favi.png">
@@ -22,7 +22,7 @@
     </div>
     <div class="meta">
         <div class="label">Chương trình đào tạo</div>
-        <h1 class="title"><%=course.getTitle()%></h1>
+        <h1 class="title"><%=course.getDepartment()==null?"Giáo trình":course.getDepartment()%></h1>
         <div class="sub">Trường/Khoa: <%=course.getDepartment()==null?"-":course.getDepartment()%></div>
         <div class="sub">Tác giả: <%=course.getAuthor()==null?"-":course.getAuthor()%></div>
         <a class="btn-primary" href="<%=request.getContextPath()%>/documents/view?id=<%=(documents!=null && !documents.isEmpty())? documents.get(0).getId() : 0 %>" >Đọc trên DigiBook</a>
@@ -36,7 +36,7 @@
      <ul class="doc-list">
          <% for (Document d : documents) { %>
              <li>
-                 <span>Tài liệu #<%=d.getId()%></span>
+                 <span><%= d.getCourseId()!=null?d.getTitle() : ("Tài liệu #"+d.getId()) %></span>
                  <a class="btn-secondary" href="<%=request.getContextPath()%>/documents/view?id=<%=d.getId()%>">Đọc</a>
              </li>
          <% } %>

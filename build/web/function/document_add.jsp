@@ -30,7 +30,7 @@
                     <select name="courseId">
                         <option value="">-- Tạo mới khoá học --</option>
                         <% for (Course c: courses) { %>
-                            <option value="<%=c.getId()%>"><%=c.getTitle()%></option>
+                            <option value="<%=c.getId()%>"><%=c.getDepartment()==null? ("Khóa "+c.getId()) : c.getDepartment()%></option>
                         <% } %>
                     </select>
                 </div>
@@ -49,11 +49,6 @@
                 <div class="form-group">
                     <label>Năm xuất bản <span class="asterisk">*</span></label>
                     <input type="number" name="publicationYear" min="0" required/>
-                </div>
-                <div class="form-group">
-                    <label>Ảnh bìa</label>
-                    <input type="file" name="coverImageFile" accept="image/*" id="coverImageFile"/>
-                    <small class="file-info">Chỉ cần thiết khi upload file PDF</small>
                 </div>
             </div>
 
@@ -116,9 +111,7 @@
             validateFileSize(this);
         });
         
-        document.getElementById('coverImageFile').addEventListener('change', function() {
-            validateFileSize(this);
-        });
+        // Cover image upload removed per new requirements
         
         // Radio button toggle
         document.querySelectorAll('input[name="mode"]').forEach(r => {

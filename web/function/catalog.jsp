@@ -56,7 +56,7 @@
             <div class="catalog-card">
                 <img src="<%= (c.getCoverImage()!=null && !c.getCoverImage().isEmpty())? c.getCoverImage() : (request.getContextPath()+"/img/LOGO.png") %>" alt="cover"/>
                 <div class="meta">
-                    <div class="title"><%=c.getTitle()%></div>
+                    <div class="title"><%=c.getDepartment()==null?"Giáo trình":c.getDepartment()%></div>
                     <div class="sub">Khoa: <%=c.getDepartment()==null?"-":c.getDepartment()%></div>
                     <div class="sub">Tác giả: <%=c.getAuthor()==null?"-":c.getAuthor()%></div>
                     <div class="sub">Năm: <%=c.getPublicationYear()==null?"-":c.getPublicationYear()%></div>

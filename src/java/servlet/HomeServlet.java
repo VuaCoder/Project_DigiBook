@@ -31,8 +31,9 @@ public class HomeServlet extends HttpServlet {
 			System.out.println("Total documents found: " + recent.size());
 			for (Document doc : recent) {
 				System.out.println("Document ID: " + doc.getId());
+				System.out.println("  Title: " + doc.getTitle());
 				if (doc.getCourseId() != null) {
-					System.out.println("  Course: " + doc.getCourseId().getTitle());
+					System.out.println("  Course Department: " + doc.getCourseId().getDepartment());
 					System.out.println("  Cover Image: " + doc.getCourseId().getCoverImage());
 				} else {
 					System.out.println("  No Course associated");

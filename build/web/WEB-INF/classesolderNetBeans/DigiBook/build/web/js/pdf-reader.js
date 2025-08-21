@@ -86,7 +86,7 @@
 					
 					const del = document.createElement('button');
 					del.className = 'annotation-delete-btn';
-					del.innerHTML = '<i class="fas fa-times"></i>';
+					del.innerHTML = '<i class="fas fa-trash"></i>';
 					del.title = 'Xóa ghi chú này';
 					del.onclick = (e) => {
 						e.preventDefault();
@@ -181,7 +181,7 @@
 					
 					const del = document.createElement('button');
 					del.className = 'vocab-delete-btn';
-					del.innerHTML = '<i class="fas fa-times"></i>';
+					del.innerHTML = '<i class="fas fa-trash"></i>';
 					del.title = 'Xóa từ vựng này';
 					del.onclick = (e) => {
 						e.preventDefault();

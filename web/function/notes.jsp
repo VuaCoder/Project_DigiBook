@@ -59,11 +59,7 @@
                                     <div class="item-meta">
                                         <span class="document-name">
                                             <i class="fas fa-file-pdf"></i>
-                                            <%=ann.getDocumentId().getCourseId().getTitle()%>
-                                        </span>
-                                        <span class="date">
-                                            <i class="fas fa-calendar"></i>
-                                            <%=ann.getCreatedAt()%>
+                                            <%=ann.getDocumentId().getTitle()%>
                                         </span>
                                     </div>
                                 </div>
@@ -113,11 +109,7 @@
                                     <div class="item-meta">
                                         <span class="document-name">
                                             <i class="fas fa-file-pdf"></i>
-                                            <%=vocab.getDocumentId().getCourseId().getTitle()%>
-                                        </span>
-                                        <span class="date">
-                                            <i class="fas fa-calendar"></i>
-                                            <%=vocab.getCreatedAt()%>
+                                            <%=vocab.getDocumentId().getTitle()%>
                                         </span>
                                     </div>
                                 </div>

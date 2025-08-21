@@ -29,7 +29,7 @@
         <div class="catalog-card">
             <img src="<%= (d.getCourseId()!=null && d.getCourseId().getCoverImage()!=null)? d.getCourseId().getCoverImage() : (request.getContextPath()+"/img/LOGO.png") %>" alt="cover"/>
             <div class="meta">
-                <div class="title"><%= d.getCourseId()!=null? d.getCourseId().getTitle() : ("Tài liệu #"+d.getId()) %></div>
+                <div class="title"><%= (d.getTitle()!=null && !d.getTitle().isEmpty()) ? d.getTitle() : ("Tài liệu #"+d.getId()) %></div>
                 <div class="sub">ID: <%=d.getId()%></div>
                 <div style="margin-top:8px;display:flex;gap:8px">
                     <a class="btn-footer" href="<%=request.getContextPath()%>/documents/view?id=<%=d.getId()%>">Đọc</a>

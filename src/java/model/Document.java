@@ -35,6 +35,12 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Document.findByUploadedAt", query = "SELECT d FROM Document d WHERE d.uploadedAt = :uploadedAt")})
 public class Document implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "title")
+    private String title;
+    @OneToMany(mappedBy = "documentId")
+    private List<Vocabulary> vocabularyList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -141,6 +147,22 @@ public class Document implements Serializable {
     @Override
     public String toString() {
         return "model.Document[ id=" + id + " ]";
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<Vocabulary> getVocabularyList() {
+        return vocabularyList;
+    }
+
+    public void setVocabularyList(List<Vocabulary> vocabularyList) {
+        this.vocabularyList = vocabularyList;
     }
     
 }

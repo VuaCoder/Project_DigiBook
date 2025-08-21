@@ -20,7 +20,6 @@ import javax.persistence.TypedQuery;
 import model.Course;
 import model.Document;
 import util.JPAUtil;
-import util.saveImageUtil;
 import jakarta.servlet.http.HttpSession;
 import model.UserAccount;
 
@@ -62,17 +61,10 @@ public class DocumentAddServlet extends HttpServlet {
 			return;
 		}
 		
-		// For upload mode, continue with multipart handling
-		Part coverImageFile = request.getPart("coverImageFile");
-		
-		if (coverImageFile != null && coverImageFile.getSize() > MAX_FILE_SIZE) {
-			request.setAttribute("error", "Ảnh bìa quá lớn! Giới hạn tối đa: 50MB");
-			doGet(request, response);
-			return;
-		}
+		// For upload mode, continue with multipart handling (cover image disabled)
 
 		// Basic validation
-		if ((courseIdParam == null || courseIdParam.isBlank()) && (title == null || title.isBlank())) {
+		if ((courseIdParam == null || courseIdParam.isBlank()) && (department == null || department.isBlank())) {
 			request.setAttribute("error", "Vui lòng nhập tiêu đề khi tạo mới khoá học.");
 			doGet(request, response);
 			return;
@@ -107,24 +99,12 @@ public class DocumentAddServlet extends HttpServlet {
 			}
 			if (course == null) {
 				course = new Course();
-				course.setTitle(title);
 				course.setDepartment(department);
 				course.setAuthor(author);
 				course.setPublicationYear(publicationYear);
 				course.setDescription(description);
-				if (coverImageFile != null && coverImageFile.getSize() > 0) {
-					String coverUrl = new saveImageUtil().upload(coverImageFile);
-					course.setCoverImage(coverUrl);
-				}
 				course.setCreatedAt(new Date());
 				em.persist(course);
-			}
-			else {
-				if (coverImageFile != null && coverImageFile.getSize() > 0) {
-					String coverUrl = new saveImageUtil().upload(coverImageFile);
-					course.setCoverImage(coverUrl);
-					em.merge(course);
-				}
 			}
 
 			String filePath;
@@ -142,6 +122,7 @@ public class DocumentAddServlet extends HttpServlet {
 			document.setCourseId(course);
 			document.setFilePath(filePath);
 			document.setUploadedAt(new Date());
+			document.setTitle(title != null && !title.isBlank() ? title : "Untitled");
 			
 			// Set owner if user is logged in
 			HttpSession session = request.getSession();
@@ -198,7 +179,6 @@ public class DocumentAddServlet extends HttpServlet {
 			}
 			if (course == null) {
 				course = new Course();
-				course.setTitle(title);
 				course.setDepartment(department);
 				course.setAuthor(author);
 				course.setPublicationYear(publicationYear);
@@ -211,6 +191,7 @@ public class DocumentAddServlet extends HttpServlet {
 			document.setCourseId(course);
 			document.setFilePath(fileUrl); // Store the URL directly
 			document.setUploadedAt(new Date());
+			document.setTitle(title != null && !title.isBlank() ? title : "Untitled");
 			
 			// Set owner if user is logged in
 			HttpSession session = request.getSession();

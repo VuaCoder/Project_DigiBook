@@ -36,8 +36,8 @@ public class PdfStreamServlet extends HttpServlet {
 			// Force disable range/byte serving which may block some PDF.js setups
 			response.setHeader("Accept-Ranges", "none");
 			String fileName = "document.pdf";
-			if (doc.getCourseId() != null && doc.getCourseId().getTitle() != null) {
-				fileName = doc.getCourseId().getTitle().replaceAll("[\\\\/:*?\"<>|]", "_") + ".pdf";
+			if (doc.getTitle() != null) {
+				fileName = doc.getTitle().replaceAll("[\\\\/:*?\"<>|]", "_") + ".pdf";
 			}
 			response.setHeader("Content-Disposition", "inline; filename=\"" + fileName + "\"");
 			if (filePath != null && (filePath.startsWith("http://") || filePath.startsWith("https://"))) {
