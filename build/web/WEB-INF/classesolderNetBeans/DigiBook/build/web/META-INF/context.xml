@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/digibook">
-    <!-- Tomcat file upload configuration -->
     <Parameter name="maxFileSize" value="52428800" override="false"/>
     <Parameter name="maxRequestSize" value="52428800" override="false"/>
     <Parameter name="fileSizeThreshold" value="0" override="false"/>
     
-    <!-- Tomcat connector settings for large uploads -->
+
     <Connector port="8080" protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="8443"
