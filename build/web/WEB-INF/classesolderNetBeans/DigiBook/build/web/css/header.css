@@ -1,0 +1,378 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Header */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: #b6c9e4;
+	z-index: 1000;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo img {
+    display: flex;
+    position: relative;
+    top: 5px;
+    height: 250px;
+}
+
+
+
+/* Hamburger styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.hamburger span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    margin: 4px 0;
+    background: #0249ac;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Mobile menu */
+@media (max-width: 768px) {
+    .logo img {
+        height: 200px;
+        position: relative;
+        left: -50px;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        max-height: calc(100vh - 100px);
+        background: #b6c9e4; /* match header background */
+        backdrop-filter: blur(15px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        transform: translateY(-100%);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 150;
+        border-top: 1px solid rgba(2, 73, 172, 0.15);
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    .nav-menu ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 20px 0;
+        margin: 0;
+        list-style: none;
+        text-align: center;
+    }
+    
+    .nav-menu ul li {
+        padding: 0;
+        margin: 0;
+        border-bottom: 1px solid rgba(2, 73, 172, 0.15);
+        background: transparent;
+    }
+    
+    .nav-menu ul li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-menu ul li a {
+        font-size: 16px;
+        color: #0249ac; /* white text on blue bg */
+        font-weight: 600;
+        text-decoration: none;
+        padding: 15px 20px;
+        display: block;
+        transition: all 0.2s ease;
+        background: transparent;
+    }
+    
+    .nav-menu ul li a:hover {
+        color: #0249ac;
+        background: rgba(255, 255, 255, 0.12);
+    }
+    
+    /* Greeting + logout on mobile: white text */
+    .nav-menu .greeting { color: #0249ac; }
+    .nav-menu .logout-link { color: #0249ac; }
+}
+
+/* Desktop defaults for greeting/logout */
+.nav-menu .greeting { color: #0249ac; }
+.nav-menu .logout-link { color: #0249ac; }
+
+/* General responsive rules for all pages */
+body {
+	padding-top: 100px; /* Account for fixed header */
+}
+
+@media (max-width: 768px) {
+	body {
+		padding-top: 100px; /* Account for fixed header */
+	}
+	.container, .catalog-page, .docadd-page, .notes-page, .course-hero {
+		padding: 15px;
+		margin: 0;
+	}
+    
+    /* General grid adjustments */
+    .catalog-grid, .items-container, .digi-frames {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+    
+    /* General card adjustments */
+    .catalog-card, .item-card, .digi-frame {
+        min-width: auto !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    /* General form adjustments */
+    .filters form, .form-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+    
+    .filters select, .filters input, .form-group input, .form-group select, .form-group textarea {
+        width: 100% !important;
+        padding: 12px !important;
+        font-size: 16px !important;
+    }
+    
+    .filters button, .btn, .btn-footer, .btn-primary {
+        width: 100% !important;
+        padding: 15px !important;
+        font-size: 16px !important;
+        text-align: center !important;
+    }
+    
+    /* General text adjustments */
+    h1, h2, h3 {
+        font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+        text-align: center !important;
+        margin: 20px 0 15px 0 !important;
+    }
+    
+    p, .muted, .subtitle {
+        font-size: clamp(14px, 3.5vw, 16px) !important;
+        text-align: center !important;
+        margin: 10px 0 !important;
+    }
+    
+    /* General spacing adjustments */
+    .section-header, .bookshelf-section, .expert-section {
+        margin: 20px 0 !important;
+        padding: 15px !important;
+    }
+    
+    /* Make sure buttons are touch-friendly */
+    button, .btn, a[role="button"] {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .container, .catalog-page, .docadd-page, .notes-page {
+        padding: 10px !important;
+    }
+    
+    .catalog-card, .item-card, .digi-frame {
+        padding: 12px !important;
+    }
+    
+    .filters, .form-card {
+        padding: 15px !important;
+    }
+}
+
+/* Header scroll behavior */
+.header {
+    transition: transform 0.3s ease;
+}
+
+.header-hidden {
+    transform: translateY(-100%);
+}
+
+/* Breakpoint-specific classes */
+.header.mobile-view {
+    /* Mobile-specific styles */
+}
+
+.header.tablet-view {
+    /* Tablet-specific styles */
+}
+
+.header.desktop-view {
+    /* Desktop-specific styles */
+}
+
+/* Body classes for breakpoints */
+body.breakpoint-mobile {
+    /* Mobile body styles */
+}
+
+body.breakpoint-tablet {
+    /* Tablet body styles */
+}
+
+body.breakpoint-desktop {
+    /* Desktop body styles */
+}
+
+/* Menu open state */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Touch-friendly improvements */
+@media (max-width: 768px) {
+    .hamburger {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    .function ul li a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #0249ac;
+    }
+    
+    /* Better touch targets */
+    .function ul li {
+        border-bottom: 1px solid rgba(2, 73, 172, 0.1);
+    }
+    
+    .function ul li:active {
+        background: rgba(2, 73, 172, 0.1);
+    }
+    
+    /* Smooth transitions */
+    .function {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: #b6c9e4;
+    }
+    
+    /* Active menu item styling */
+    .function ul li a.active {
+        background: rgba(2, 73, 172, 0.1);
+        color: #0249ac;
+        font-weight: 700;
+    }
+}
+
+/* Mobile menu active state */
+.nav-menu.active {
+	display: block;
+	transform: translateY(0);
+}
+
+/* Desktop navigation */
+.nav-menu {
+    margin-right: 2%;
+}
+
+.nav-menu ul {
+    display: flex;
+}
+
+.nav-menu li {
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    list-style: none;
+    transition: font-weight 0.2s ease, color 0.2s ease;
+}
+
+.nav-menu li:active {
+    color: #0249ac;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #0249ac;
+}
+
+.nav-menu li:hover {
+    font-weight: bold;
+    color: #0249ac;
+}
+
+/* Greeting text color */
+.nav-menu .greeting {
+    color: #0249ac;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	/* Keep content clear of fixed header */
+	body { padding-top: 100px; }
+	/* Tweak logo size/offset for tablet */
+	.logo img {
+		height: 180px;
+		left: -30px;
+	}
+	/* Make nav comfortable on tablet */
+	.nav-menu ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+	.nav-menu li { padding: 8px; }
+	.nav-menu a { font-size: 18px; }
+}

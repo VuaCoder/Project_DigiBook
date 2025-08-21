@@ -1,0 +1,214 @@
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --danger: #b91c1c;
+    --success: #16a34a;
+    --border: #e5e7eb;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5f7ff, #eef2ff);
+    padding: 24px;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeSlideIn 320ms ease-out forwards;
+}
+
+.auth-card {
+    max-width: 420px;
+    width: 100%;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.auth-card h2 {
+    margin: 0 0 16px 0;
+}
+
+.brand {
+    text-align: center;
+    margin-bottom: 16px;
+}
+.brand img {
+    position:relative;
+    top: 10px;
+    width:200px;
+    transform: scale(1.2);
+}
+.brand h1 {
+    margin: 0 0 6px 0;
+    font-size: 22px;
+}
+.brand .subtitle {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    flex: 1;
+    width: 100%;
+    padding-right: 45px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    color: #6b7280;
+    transition: color 160ms ease, background-color 160ms ease;
+}
+
+.password-toggle:hover {
+    color: var(--primary);
+    background-color: rgba(37, 99, 235, 0.1);
+}
+
+.password-toggle:focus {
+    outline: none;
+    color: var(--primary);
+    background-color: rgba(37, 99, 235, 0.15);
+}
+
+.eye-icon,
+.eye-off-icon {
+    transition: opacity 160ms ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.required-asterisk {
+    color: var(--danger);
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0 12px 0;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.error {
+    color: var(--danger);
+    margin-bottom: 10px;
+}
+.success {
+    color: var(--success);
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 160ms ease, transform 120ms ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+.link {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: font-weight 160ms ease;
+}
+.link:hover{
+    color: #004aad;
+    font-weight: 700;
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fff;
+    color: #111827;
+    text-decoration: none;
+    transition: border-color 160ms ease, background-color 160ms ease;
+}
+.btn-secondary:hover {
+    border-color: #cbd5e1;
+    background-color: #f8fafc;
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+}
+.goback{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:12px;
+}
+@keyframes fadeSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
